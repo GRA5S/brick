@@ -1,0 +1,249 @@
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+<style>
+  .wavey {
+    --mask:
+      radial-gradient(125.22px at 50% calc(100% - 168px),#000 99%,#0000 101%) calc(50% - 112px) 0/224px 100%,
+      radial-gradient(125.22px at 50% calc(100% + 112px),#0000 99%,#000 101%) 50% calc(100% - 56px)/224px 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+
+  .waveysmall {
+    --mask:
+      radial-gradient(62.61px at 50% calc(100% - 84px),#000 99%,#0000 101%) calc(50% - 56px) 0/112px 100%,
+      radial-gradient(62.61px at 50% calc(100% + 56px),#0000 99%,#000 101%) 50% calc(100% - 28px)/112px 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+  .marqueeitem {
+    transition: transform 0.2s ease;
+  }
+  .marqueeitem:hover {
+    transform: scale(1.1);
+  }
+  .button {
+    outline: rgb(54, 28, 17) solid 4px;
+    margin-bottom: 16px;
+    /* outline:#69995D solid 4px; */
+  }
+  .button:hover {
+    background-color: #572E1B;
+  }
+  .text {
+    color:#CBAC88;
+  }
+  .title {
+    color:#CBAC88;
+    font-weight: 900;
+    text-shadow: -4px -4px 0 rgb(54, 28, 17), 4px -4px 0 rgb(54, 28, 17), -4px 4px 0 rgb(54, 28, 17), 4px 4px 0 rgb(54, 28, 17);
+    text-decoration: underline;
+    font-style: italic;
+  }
+  .pattern {
+    width: 100vw;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(87, 46, 27);
+    overflow: hidden;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: clamp(20px, 2vw, 2vw);
+    align-items: center;
+  }
+
+  .row.offset {
+    /* padding-left: calc(12vw / 2 + 2vw / 2); */
+    padding-left: 200px;
+
+  }
+
+  .brick {
+    width: 15vw;
+    min-width: 115px;
+    height: 10vw;
+    min-height: 77px;
+    margin-right: clamp(20px, 2vw, 2vw);
+    display: inline-block;
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+  }
+
+  .brick:hover {
+    transform: scale(1.025);
+  }
+
+  .brick { background: rgb(117, 63, 38); }
+</style>
+
+
+
+
+
+<div style="zoom: 150%;">
+  <div class="flex h-full w-full flex-col absolute left-0 top-0 " data-controller="sidebar" data-sidebar-storage-key-value="basicSidebar">
+
+    <div class="relative z-0 flex h-[100vh] w-full">
+      <div class="relative flex h-full flex-row">
+        <details class="w-13 open:w-64 group/sidebar relative z-20 h-[100%]  shrink-0 overflow-hidden max-md:hidden motion-safe:transition-all motion-safe:duration-300" style="border-right: 1px solid #361c11; background-color: #2f160e;" data-sidebar-target="desktopSidebar" data-action="mouseenter->sidebar#open mouseleave->sidebar#close">
+          <%# i swear this doesnt not have proper comments because its vibecoded i just copy pasted from https://railsblocks.com/docs/sidebar  %>
+          <!-- Tiny Sidebar (shown when closed) -->
+          <summary class="group-open/sidebar:hidden flex min-h-full h-full cursor-pointer list-none flex-col items-start pl-2 pr-1.5">
+            <div class="flex h-13 w-full items-center justify-start">
+              <button class="cursor-pointer flex size-10 items-center justify-center rounded-lg focus:outline-none disabled:opacity-50 sm:size-9" style="color: #CBAC88;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-4 sm:size-4.5" width="18" height="18" viewBox="0 0 18 18"><path d="m6.5 3.5 5 5.5-5 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              </button>
+            </div> 
+            <div class="flex flex-col gap-8 items-center py-2 ml-2 mt-2">
+              <button class="flex size-6 items-center justify-center rounded focus:outline-none" style="color: #CBAC88;" title="Dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <%# <svg xmlns="http://www.w3.org/2000/svg" class="size-5 sm:size-5.5" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"><path d="M14.855 5.95L9.605 1.96C9.247 1.688 8.752 1.688 8.395 1.96L3.145 5.95C2.896 6.139 2.75 6.434 2.75 6.747V14.251C2.75 15.356 3.645 16.251 4.75 16.251H7.25V12.251C7.25 11.699 7.698 11.251 8.25 11.251H9.75C10.302 11.251 10.75 11.699 10.75 12.251V16.251H13.25C14.355 16.251 15.25 15.356 15.25 14.251V6.746C15.25 6.433 15.104 6.14 14.855 5.95Z"></path></g></svg> %>
+                <%# <svg xmlns="http://www.w3.org/2000/svg" class="size-5 sm:size-5.5" width="18" height="18" viewBox="0 0 24 24"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"><path d="M14.855 5.95L9.605 1.96C9.247 1.688 8.752 1.688 8.395 1.96L3.145 5.95C2.896 6.139 2.75 6.434 2.75 6.747V14.251C2.75 15.356 3.645 16.251 4.75 16.251H7.25V12.251C7.25 11.699 7.698 11.251 8.25 11.251H9.75C10.302 11.251 10.75 11.699 10.75 12.251V16.251H13.25C14.355 16.251 15.25 15.356 15.25 14.251V6.746C15.25 6.433 15.104 6.14 14.855 5.95Z"></path></g></svg> %>
+              </button>
+              <button class="flex size-6 items-center justify-center rounded focus:outline-none" style="color: #CBAC88;" title="The Masonry">
+                <%# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-anvil-icon lucide-anvil"><path d="M7 10H6a4 4 0 0 1-4-4 1 1 0 0 1 1-1h4"/><path d="M7 5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1 7 7 0 0 1-7 7H8a1 1 0 0 1-1-1z"/><path d="M9 12v5"/><path d="M15 12v5"/><path d="M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1"/></svg> %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-anvil-icon lucide-anvil"><path d="M7 10H6a4 4 0 0 1-4-4 1 1 0 0 1 1-1h4"/><path d="M7 5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1 7 7 0 0 1-7 7H8a1 1 0 0 1-1-1z"/><path d="M9 12v5"/><path d="M15 12v5"/><path d="M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1"/></svg>
+              </button>
+              <button class="flex size-6 items-center justify-center rounded focus:outline-none" style="color: #CBAC88;" title="Projects">
+                <%# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open-dot-icon lucide-folder-open-dot"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/><circle cx="14" cy="15" r="1"/></svg> %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open-dot-icon lucide-folder-open-dot"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/><circle cx="14" cy="15" r="1"/></svg>
+              </button>
+              <button class="flex size-6 items-center justify-center rounded focus:outline-none" style="color: #CBAC88;" title="Explore">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass-icon lucide-compass"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/></svg>
+                
+                <%# <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass-icon lucide-compass"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/></svg> %>
+              </button>
+            </div>
+            <div class="flex-grow"></div>
+            <div class="py-1 sm:py-1.5 flex items-start justify-center">
+              <button class="flex mb-2 h-8 w-9 items-center justify-center rounded-lg text-neutral-700 hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100 disabled:opacity-50 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-100 dark:hover:bg-neutral-800 focus-visible:dark:bg-neutral-800" aria-label="Profile" title="Profile">
+                <img alt="Profile image" class="size-8 rounded-full object-cover" referrerpolicy="no-referrer" src="<%= current_user.picture %>">
+              </button>
+            </div>
+          </summary>
+
+          <!-- Full Sidebar (shown when open) -->
+          <div class="h-full w-64 overflow-x-clip overflow-y-auto text-clip whitespace-nowrap" style="background-color: #2f160e;" data-sidebar-target="desktopContent">
+            <!-- Shared Sidebar Content Template -->
+            <template data-sidebar-target="contentTemplate" class="flex ">
+              <nav class="relative flex w-full flex-1 flex-col select-none" style="height: 66.6666vh; ">
+              <div class="sticky top-0 z-30" style="background-color: #2f160e;">
+                <div class="px-1.5 sm:px-2">
+                  <div class="flex h-13 items-center justify-between">
+
+                    <a href="/" aria-label="Home" class="flex size-10 rounded-lg focus:outline-none disabled:opacity-50 sm:size-9" style="color: #CBAC88;">
+                      <h1 class="font-bold z-4 text-4xl title">BRICK</h1>
+                    </a>
+                    <%# CHEVRON %>
+                    <div class="flex">
+                      <button class="flex size-10 items-center justify-center rounded-lg focus:outline-none disabled:opacity-50 sm:size-9" style="color: #CBAC88;" aria-expanded="true" aria-label="Close sidebar" data-state="closed" data-action="click->sidebar#close">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 sm:size-4.5" width="18" height="18" viewBox="0 0 18 18"><path d="m11.5 3.5-5 5.5 5 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="relative p-1.5 last:mb-5 sm:p-2" style="background-color: #2f160e;">
+                <a href="/main" aria-label="Dashboard" class="button group w-full flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-base focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50" style="color: #CBAC88;">
+                  <div class="flex min-w-0 items-center gap-1.5">
+                    <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                      <%# <svg xmlns="http://www.w3.org/2000/svg" class="size-5 sm:size-5.5" width="18" height="18" viewBox="0 0 18 18"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"><path d="M14.855 5.95L9.605 1.96C9.247 1.688 8.752 1.688 8.395 1.96L3.145 5.95C2.896 6.139 2.75 6.434 2.75 6.747V14.251C2.75 15.356 3.645 16.251 4.75 16.251H7.25V12.251C7.25 11.699 7.698 11.251 8.25 11.251H9.75C10.302 11.251 10.75 11.699 10.75 12.251V16.251H13.25C14.355 16.251 15.25 15.356 15.25 14.251V6.746C15.25 6.433 15.104 6.14 14.855 5.95Z"></path></g></svg> %>
+                    </div>
+                    <div class="flex min-w-0 grow items-center gap-2.5 group-data-no-contents-gap:gap-0">
+                      <div class="truncate font-bold text-xl">Dashboard</div>
+                    </div>
+                  </div>
+                </a>
+                <a href="/masonry" class="button group w-full flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-base focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50" style="color: #CBAC88;">
+                  <div class="flex min-w-0 items-center gap-1.5">
+                    <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-anvil-icon lucide-anvil"><path d="M7 10H6a4 4 0 0 1-4-4 1 1 0 0 1 1-1h4"/><path d="M7 5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1 7 7 0 0 1-7 7H8a1 1 0 0 1-1-1z"/><path d="M9 12v5"/><path d="M15 12v5"/><path d="M5 20a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3 1 1 0 0 1-1 1H6a1 1 0 0 1-1-1"/></svg>
+                    </div>
+                    <div class="flex min-w-0 grow items-center gap-2.5 group-data-no-contents-gap:gap-0">
+                      <div class="truncate font-bold text-xl">The Masonry</div>
+                    </div>
+                  </div>
+                </a>
+                <a href="/projects" class="button group w-full flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-base focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50" style="color: #CBAC88;">
+                  <div class="flex min-w-0 items-center gap-1.5">
+                    <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open-dot-icon lucide-folder-open-dot"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/><circle cx="14" cy="15" r="1"/></svg>
+                    </div>
+                    <div class="flex min-w-0 grow items-center gap-2.5 group-data-no-contents-gap:gap-0">
+                      <div class="truncate font-bold text-xl">Projects</div>
+                    </div>
+                  </div>
+                </a>
+                <a href="/explore" class="button group w-full flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-base focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50" style="color: #CBAC88;">
+                  <div class="flex min-w-0 items-center gap-1.5">
+                    <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass-icon lucide-compass"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="flex min-w-0 grow items-center gap-2.5 group-data-no-contents-gap:gap-0">
+                      <div class="truncate font-bold text-xl">Explore</div>
+                    </div>
+                  </div>
+                </a>
+              </aside>
+
+              <div class="grow"></div>
+
+              <div class="sticky bottom-0 z-30 w-full empty:hidden sm:p-2" style="background-color: #2f160e;">
+                <button class="w-full flex items-center gap-2 rounded-md px-1 -ml-1 sm:px-1.5 py-1 sm:py-1.5 text-left text-sm text">
+                  <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50">
+                    <div class="flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-neutral-500/30">
+                      <img alt="Profile image" class="p-0 h-8 w-8 shrink-0 object-cover" referrerpolicy="no-referrer" src="<%= current_user.picture %>">
+                    </div>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="flex min-w-0 grow items-center gap-2.5 group-data-no-contents-gap:gap-0">
+                      <div class="truncate text-base font-semibold"><%= current_user.display_name %></div>
+                    </div>
+                  </div>
+                  <div class="flex-grow"></div>
+                  <div class="text text-2xl font-semibold flex items-center justify-center flex-row">
+                    <%= current_user.bricks %>
+                    <img class="w-6 ml-1" src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/3e05df65ea3fc1091c63815f78af477450b3c482_image.png">
+                  </div>
+                </button>
+              </div>
+            </nav>
+            </template>
+          </div>
+        </details>
+      </div>
+
+
+      <main class="min-h-full grow h-auto w-auto flex flex-col justify-start items-center relative p-4" style="background: rgb(87, 46, 27);">
+
+        <div class="title text-7xl">Dashboard</div>
+        <div class="mt-3 flex-col w-full h-full items-start justify-start">
+          <p class="text text-4xl font-bold">Welcome to Brick!, <%= current_user.display_name %></p>
+          <p class="text text-xl">It is currently <strong><%= Time.now.strftime("%A, %B %d, %Y at %I:%M %p") %></strong></p>
+          <p class="text text-xl">You've logged <strong>x hours</strong> this week. Keep Building up your game, brick by brick and someday you'll be a master builder!</p>
+          <p class="text text-xl">You currently have <strong><%= current_user.bricks %></strong> bricks. How rich!</p>
+
+
+        </div>
+
+
+      </main>
+    </div>
+  </div>
+</div>
+
+
+
