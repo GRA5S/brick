@@ -4,7 +4,7 @@ gem "omniauth-rails_csrf_protection"
 gem "omniauth_openid_connect"
 gem "dotenv-rails", groups: [:development, :test]
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.3"
+gem "rails", "~> 8.1.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
